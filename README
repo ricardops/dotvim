@@ -1,8 +1,11 @@
 Installation:
 
-    git clone https://github.com/ricardops/dotvim.git
+    git clone https://github.com/ricardops/dotvim.git ~/.vim
 
-Create symlinks:
+Create symlink:
 
     ln -s ~/.vim/vimrc ~/.vimrc
-    ln -s ~/.vim/gvimrc ~/.gvimrc
+
+Install configured bundles
+
+    Launch vim, run :BundleInstall
