@@ -1,3 +1,11 @@
+function! IndentAllFile()
+  normal mz
+  normal Hmy
+  normal gg=G
+  normal 'yzt
+  normal `z
+endfunction
+
 function! SearchColor()
   hi search guibg=black  ctermbg=green ctermfg=black gui=NONE cterm=NONE
 endfunction

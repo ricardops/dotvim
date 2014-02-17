@@ -11,8 +11,8 @@ Bundle 'gmarik/vundle'
 " ---------------
 " My bundles  
 " ---------------
-Bundle 'mattn/emmet-vim'
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-rails'
 Bundle 'scrooloose/syntastic'
@@ -21,18 +21,20 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'slim-template/vim-slim'
 Bundle 'ervandew/supertab'
 Bundle 'majutsushi/tagbar'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'ricardops/vim-snippets'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'vim-scripts/VisIncr'
+" Bundle 'vim-scripts/VisIncr'
 Bundle 'cschlueter/vim-wombat'
 Bundle 'godlygeek/tabular'
 Bundle 'Townk/vim-autoclose'
 Bundle 'itchyny/lightline.vim'
-Bundle 'terryma/vim-multiple-cursors'
+" Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-endwise'
+" Bundle 'Valloric/MatchTagAlways'
+" Bundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on
 
@@ -50,18 +52,18 @@ source ~/.vim/functions.vim     " Small custom functions
 set t_Co=256
 color jellybeans
 "color wombat256
-call SearchColor() " Function to change color search 
+call SearchColor()           " Function to change color search 
 
 
 
 " ---------------
 " UI 
 " ---------------
-set number         " Line numbers on
-set laststatus=2   " Always show status line
-set title          " File name on terminal title
-set encoding=utf-8 " Sets the character encoding to utf-8
-set lazyredraw     " The screen will not be redrawn while executing macros
+set number                   " Line numbers on
+set laststatus=2             " Always show status line
+set title                    " File name on terminal title
+set encoding=utf-8           " Sets the character encoding to utf-8
+set lazyredraw               " The screen will not be redrawn while executing macros
 
 
 " ---------------
@@ -90,27 +92,27 @@ set wildmode=list:longest   " More useful tab completion on menu
 " ---------------
 " Text Format 
 " ---------------
-set tabstop=2         " Number of spaces that a <Tab> in the file counts.
-set shiftwidth=2      " Number of spaces to use for each step of (auto)indent.
-set softtabstop=2     " Number of spaces that a <Tab> counts for while performing editing operations
+set tabstop=2               " Number of spaces that a <Tab> in the file counts.
+set shiftwidth=2            " Number of spaces to use for each step of (auto)indent.
+set softtabstop=2           " Number of spaces that a <Tab> counts for while performing editing operations
 set autoindent
-set expandtab         " In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
+set expandtab               " In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
 set fileencoding=utf8
 set copyindent
 
 " ---------------
 " Searching 
 " ---------------
-set hlsearch   " When there is a previous search pattern, highlight all its matches.
+set hlsearch                " When there is a previous search pattern, highlight all its matches.
 set ignorecase
-set smartcase  " Override the 'ignorecase' option if the search pattern contains upper case characters.
+set smartcase               " Override the 'ignorecase' option if the search pattern contains upper case characters.
 
 " ---------------
 " Visual 
 " ---------------
-set showcmd      " Show (partial) command in the last line of the screen.
+set showcmd                 " Show (partial) command in the last line of the screen.
 set linebreak
-set showbreak=.. " Show this when wrap a line
+set showbreak=..            " Show this when wrap a line
 set cursorline
 
 
@@ -118,18 +120,22 @@ set cursorline
 " Mouse 
 " ---------------
 set mousehide
-set mouse=a   " Mose facility
+set mouse=a                 " Mose facility
 
 
+
+
+" Open .vimrc in new tab
+nmap <leader>v :tabedit $MYVIMRC<CR>
 
 
 " Make <C-l> clear the highlight
 nnoremap <C-l> :nohls<CR>:set hls?<CR>
 
 
-" Full copy/cut/past simple
+" Full paste/copy/cut simple
 inoremap <C-v> <ESC>"+gpa
-vnoremap <C-C> "+y
+vnoremap <C-c> "+y
 vnoremap <C-x> "+x
 
 
@@ -145,8 +151,8 @@ nnoremap j gj
 nnoremap k gk
 
 
-" Format the entire file
-nmap <leader>ff ggVG=
+" Format the entire file with ,ff
+nmap <leader>ff :call IndentAllFile()<CR>
 
 " Select all with CTRL a
 noremap <C-a> ggVG
@@ -156,6 +162,10 @@ set spelllang=en,pt
 let spell_auto_type="tex"
 autocmd FileType tex,mail set spell
 nmap <leader>s :set spell!<CR>
+
+" Show date and time
+nmap <leader>d :echo strftime("%c")<CR>
+
 
 
 
@@ -171,11 +181,14 @@ let NERDTreeIgnore=['\.vim','\.zip','\.tar','\.jpg','\.png','\.gif','\.pdf']
 " ---------------
 " CtrlP  
 " ---------------
-let g:ctrlp_working_path_mod = 2
+let g:ctrlp_working_path_mod = 'c'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 600
 let g:ctrlp_max_depth = 5
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_use_caching = 0
+
 
  
 " ---------------
@@ -198,4 +211,33 @@ hi TagbarSignature guifg=116 ctermfg=116
 " ---------------
 nmap <F5> :AutoCloseToggle<CR>
 let g:AutoClosePairs_del = "'"
+autocmd FileType ruby " auto-close || pair in ruby files
+        \ let b:AutoClosePairs = AutoClose#DefaultPairsModified("|", "")
 
+
+" ---------------
+" Surround
+" ---------------
+" Autoclose in visual mode
+vmap [ S[ 
+vmap ( S(
+vmap { S{
+vmap ] S]
+vmap ) S)
+vmap } S}
+vmap " S"
+vmap ' S'
+
+
+" ---------------
+" GitGutter 
+" ---------------
+nmap <leader>g :GitGutterToggle<CR>
+
+
+" ---------------
+" Lightline 
+" ---------------
+let g:lightline = {
+      \'colorscheme': 'jellybeans',
+      \}
