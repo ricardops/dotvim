@@ -1,5 +1,5 @@
 # My Vim Configs
-* Author: Ricardo Silva <ricardops.inf@gmail.com>
+* Author: Ricardo Silva - <ricardops.inf@gmail.com>
 
 **All this configurations was created and tested only on linux.**
 
