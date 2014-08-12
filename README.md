@@ -22,23 +22,24 @@
 ![InstallPlungins](assets/InstallPlugins.gif?raw=true)
     
 ## Mappings
+* `j` - Jump to line below in long lines.
+* `k` - Jump to line up in long lines.
 * `,v` -  Open .vimrc in new tab.
+* `,ff` - Format the entire file.
+* `,s` - Set spell on/off.
+* `,d` - Show date and time.
+* `,p` - NERDTree toggle.
+* `,t` - Tabbar toggle.
+* `,g` - Git Gutter toggle.
+* `,nt` - Open new tab
+* `F5` - Auto Close toggle.
 * `Ctrl - l` - Make <C-l> clear the highlight.
 * `Ctrl - v` - Paste.
 * `Ctrl - c` - Copy.
 * `Ctrl - x` - Cut.
 * `Ctrl - Right` - Go to next tab.
 * `Ctrl - Left` - Go to previous tab.
-* `j` - Jump to line below in long lines.
-* `k` - Jump to line up in long lines.
-* `,ff` - Format the entire file.
 * `Ctrl - a` - Select all.
-* `,s` - Set spell on/off.
-* `,d` - Show date and time.
-* `,p` - NERDTree toggle.
-* `,t` - Tabbar toggle.
-* `F5` - Auto Close toggle.
-* `,g` - Git Gutter toggle.
 
 
 

@@ -7,7 +7,8 @@ function! IndentAllFile()
 endfunction
 
 function! SearchColor()
-  hi search guibg=black  ctermbg=green ctermfg=black gui=NONE cterm=NONE
+  hi search ctermbg=green ctermfg=black gui=NONE cterm=NONE
+  hi IncSearch ctermfg=black ctermbg=yellow cterm=bold
 endfunction
 
 function! GetFileSize()
@@ -36,6 +37,3 @@ function! SetStatusLine()
   set statusline+=%2*[%P]
   set statusline+=[%{GetFileSize()}]
 endfunction
-
-
-

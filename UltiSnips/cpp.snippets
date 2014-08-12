@@ -1,0 +1,18 @@
+snippet todo "This is a TODO reminder" b
+// TODO: ${1:desc} (`!v strftime("%d/%m/%y, %H:%M,")` `echo $USER`)
+endsnippet
+
+snippet funci "Function header." b
+${1:void} ${2:name}($3);$4
+endsnippet
+
+snippet func "Function declaration." b
+${1:void} ${2:name}($3)
+{
+	$4
+}
+endsnippet
+
+snippet ifi "In line if(..);" b
+if(${1:/* condition */})$2;
+endsnippet

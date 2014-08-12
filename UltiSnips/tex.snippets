@@ -1,0 +1,28 @@
+snippet subfig "Add a subfigure" b
+\subfigure[$1]
+{
+	$2
+}
+endsnippet
+
+snippet todo "This is a TODO reminder" b
+% TODO: ${1:desc} (`!v strftime("%d/%m/%y-%H:%M")`)
+endsnippet
+
+snippet note "This is a NOTE reminder" b
+% NOTE: ${1:desc} (`!v strftime("%d/%m/%y-%H:%M")`)
+endsnippet
+
+snippet ref "One more reference!"
+${1:Figure}~\ref{${2:fig:}$3}$4
+endsnippet
+
+snippet path "Path tikz" b
+\path[${1:edge}]  ($2)       --        node[]        {}          ($3);$4
+endsnippet
+
+snippet node "Node tikz" b
+\node[${1:vertex}] ($2)[${3:below} of=$4]    {$5};$6
+endsnippet
+
+
