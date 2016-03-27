@@ -1,41 +1,52 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set rtp+=~/.vim/bundle/vundle/
+" call vundle#rc()
 
 " Let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+" Bundle 'gmarik/vundle'
 
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" source ~/.vim/plugins.vim
 " ---------------
 " My bundles  
 " ---------------
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-rails'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'slim-template/vim-slim'
-Bundle 'ervandew/supertab'
-Bundle 'majutsushi/tagbar'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'vim-scripts/VisIncr'
-Bundle 'cschlueter/vim-wombat'
-Bundle 'tomasr/molokai'
-Bundle 'godlygeek/tabular'
-Bundle 'Townk/vim-autoclose'
-Bundle 'itchyny/lightline.vim'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tpope/vim-endwise'
-Bundle 'Valloric/MatchTagAlways'
-Bundle 'airblade/vim-gitgutter'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-rails'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'slim-template/vim-slim'
+Plugin 'ervandew/supertab'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'honza/vim-snippets'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'vim-scripts/VisIncr'
+Plugin 'godlygeek/tabular'
+Plugin 'Townk/vim-autoclose'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-endwise'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Valloric/MatchTagAlways'
+Plugin 'SirVer/ultisnips'
+Plugin 'junegunn/goyo.vim'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'tomasr/molokai'
+" Plugin 'benmills/vimux'
+
+call vundle#end()            " required
+
+
 
 filetype plugin indent on
 
@@ -51,18 +62,20 @@ source ~/.vim/functions.vim     " Small custom functions
 " Color 
 " ---------------
 set t_Co=256
-color jellybeans
-" color wombat256
-" color molokai 
-" let g:rehash256 = 1
-call SearchColor()           " Function to change color search 
+" color jellybeans
+" color Tomorrow 
+color Tomorrow-Night
+" color Tomorrow-Night-Eighties
+" color Tomorrow-Night-Bright
 
 
 
 " ---------------
 " UI 
 " ---------------
+set rnu
 set number                   " Line numbers on
+set numberwidth=5
 set laststatus=2             " Always show status line
 set title                    " File name on terminal title
 set encoding=utf-8           " Sets the character encoding to utf-8
@@ -130,6 +143,7 @@ set showcmd                 " Show (partial) command in the last line of the scr
 set linebreak
 set showbreak=..            " Show this when wrap a line
 set cursorline
+syntax on
 
 
 " ---------------
@@ -156,6 +170,11 @@ nnoremap <C-l> :nohls<cr>:set hls?<cr>
 inoremap <C-v> <esc>"+gp
 vnoremap <C-c> "+y
 vnoremap <C-x> "+x
+
+" Use tab to jump between blocks, because it's easier
+nnoremap <tab> %
+vnoremap <tab> %
+
 
 
 " Switch between tabs
@@ -188,6 +207,26 @@ onoremap in( :<c-u>normal! f(vi(<cr>
 
 " Remap ESC
 inoremap jk <esc>l
+
+" Jump to next character in insert mode
+inoremap <C-l> <esc>la
+
+" Jump to previous character in insert moda
+inoremap <C-h> <esc>i
+
+" go to start/end of de line in isert mode
+inoremap <C-e> <esc>A
+inoremap <C-a> <esc>I
+
+" remove extra whitespace
+nmap <leader><space> :%s/\s\+$<cr>
+
+" shortcut to save
+nmap <leader>, :w<cr>
+
+" scroll the viewport faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
 
 
 " Auto-center
@@ -228,18 +267,11 @@ autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
 
 
-" Return to last edit position when opening files
-autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \ exe "normal! g`\"" |
-      \ endif
-" Remember info about open buffers on close
-" set viminfo^=%
 
 
 
 " ---------------
-" NERDTree 
+"NERDTree 
 " ---------------
 nmap <leader>p :NERDTreeToggle<cr>
 let NERDTreeHighlightCursorline=1
@@ -248,7 +280,7 @@ let NERDTreeIgnore=['\.vim','\.zip','\.tar','\.jpg','\.png','\.gif','\.pdf']
 
 
 " ---------------
-" CtrlP  
+"CtrlP  
 " ---------------
 let g:ctrlp_tabpage_position = 'ac'
 let g:ctrlp_working_path_mod = 'c'
@@ -265,15 +297,6 @@ let g:ctrlp_use_caching = 0
 " SuperTab  
 " ---------------
 let g:SuperTabNoCompletAfter=['\s','*','-','+']
-
-
-" ---------------
-" Tagbar   
-" ---------------
-nmap <leader>t :TagbarToggle<cr>
-let g:tagbar_autofocus = 1
-hi TagbarKind guifg=Green ctermfg=Green
-hi TagbarSignature guifg=116 ctermfg=116
 
 
 " ---------------
@@ -305,16 +328,8 @@ vmap ' S'
 nmap <leader>g :GitGutterToggle<cr>
 
 
-" ---------------
-" Lightline 
-" ---------------
-let g:lightline = {
-      \'colorscheme': 'jellybeans',
-      \}
+
+let g:Powerline_colorscheme = 'solarized16'
 
 
-" ---------------
-" UltiSnips 
-" ---------------
-let g:UltiSnipsEditSplit="vertical"
-nmap <leader>l :call UltiSnips#ListSnippets()<cr>
+call SearchColor()           " Function to change color search 
