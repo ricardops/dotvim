@@ -1,20 +1,15 @@
 set nocompatible
 filetype off
 
-" set rtp+=~/.vim/bundle/vundle/
-" call vundle#rc()
-
-" Let Vundle manage Vundle
-" Bundle 'gmarik/vundle'
-
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" source ~/.vim/plugins.vim
+" Let Vundle manage itself
+Plugin 'gmarik/Vundle.vim'
+
 " ---------------
-" My bundles  
+" Plugins  
 " ---------------
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'mattn/emmet-vim'
@@ -27,7 +22,7 @@ Plugin 'slim-template/vim-slim'
 Plugin 'ervandew/supertab'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'honza/vim-snippets'
+" Plugin 'honza/vim-snippets'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'vim-scripts/VisIncr'
 Plugin 'godlygeek/tabular'
@@ -45,9 +40,6 @@ Plugin 'tomasr/molokai'
 " Plugin 'benmills/vimux'
 
 call vundle#end()            " required
-
-
-
 filetype plugin indent on
 
 let mapleader=","
