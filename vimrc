@@ -22,7 +22,7 @@ Plugin 'slim-template/vim-slim'
 Plugin 'ervandew/supertab'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-" Plugin 'honza/vim-snippets'
+Plugin 'honza/vim-snippets'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'vim-scripts/VisIncr'
 Plugin 'godlygeek/tabular'
@@ -31,7 +31,8 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-endwise'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Lokaltog/vim-powerline'
-Plugin 'Shougo/neocomplete.vim'
+" Plugin 'Shougo/neocomplete.vim'
+" Plugin 'Vlloric/YouCompleteMe'
 Plugin 'Valloric/MatchTagAlways'
 Plugin 'SirVer/ultisnips'
 Plugin 'junegunn/goyo.vim'
@@ -318,6 +319,13 @@ vmap ' S'
 " GitGutter 
 " ---------------
 nmap <leader>g :GitGutterToggle<cr>
+
+
+
+" ---------------
+" UltiSnips 
+" ---------------
+let g:UltiSnipsEditSplit = 'vertical'
 
 
 
