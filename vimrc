@@ -12,17 +12,15 @@ Plugin 'gmarik/Vundle.vim'
 " Plugins  
 " ---------------
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-rails'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'slim-template/vim-slim'
-Plugin 'ervandew/supertab'
+" Plugin 'ervandew/supertab'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'honza/vim-snippets'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'vim-scripts/VisIncr'
 Plugin 'godlygeek/tabular'
@@ -31,10 +29,11 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-endwise'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Lokaltog/vim-powerline'
-" Plugin 'Shougo/neocomplete.vim'
-" Plugin 'Vlloric/YouCompleteMe'
 Plugin 'Valloric/MatchTagAlways'
+Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'mattn/emmet-vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'tomasr/molokai'
@@ -211,6 +210,14 @@ inoremap <C-h> <esc>i
 inoremap <C-e> <esc>A
 inoremap <C-a> <esc>I
 
+
+" Repeat latest f, t, F or T
+nmap <C-j> ;
+" Repeat latest f, t, F or T in opposite direction
+nmap <C-k> ,
+
+
+
 " remove extra whitespace
 nmap <leader><space> :%s/\s\+$<cr>
 
@@ -289,7 +296,7 @@ let g:ctrlp_use_caching = 0
 " ---------------
 " SuperTab  
 " ---------------
-let g:SuperTabNoCompletAfter=['\s','*','-','+']
+" let g:SuperTabNoCompletAfter=['\s','*','-','+']
 
 
 " ---------------
@@ -325,6 +332,9 @@ nmap <leader>g :GitGutterToggle<cr>
 " ---------------
 " UltiSnips 
 " ---------------
+let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit = 'vertical'
 
 
