@@ -16,7 +16,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-rails'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'slim-template/vim-slim'
 " Plugin 'ervandew/supertab'
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -30,14 +30,16 @@ Plugin 'tpope/vim-endwise'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'Valloric/MatchTagAlways'
-Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'honza/vim-snippets'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'mattn/emmet-vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'tomasr/molokai'
 " Plugin 'benmills/vimux'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'rking/ag.vim'
 
 call vundle#end()            " required
 filetype plugin indent on
@@ -146,9 +148,10 @@ set mouse=a                 " Mose facility
 
 
 
-" Open .vimrc in new tab
-nmap <leader>v :tabedit $MYVIMRC<cr>
-
+" edit vimrc/zshrc/tmux and load vimrc bindings
+nnoremap <leader>ev :tabedit $MYVIMRC<cr>
+nnoremap <leader>ez :tabedit ~/.zshrc<cr>
+nnoremap <leader>et :tabedit ~/.tmux.conf<cr>
 
 " Source my vimrc file
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -167,6 +170,8 @@ vnoremap <C-x> "+x
 nnoremap <tab> %
 vnoremap <tab> %
 
+" highlight last inserted text
+nnoremap gV `[v`]
 
 
 " Switch between tabs
@@ -273,7 +278,7 @@ autocmd InsertLeave * :setlocal hlsearch
 " ---------------
 "NERDTree 
 " ---------------
-nmap <leader>p :NERDTreeToggle<cr>
+nmap <silent><leader>p :NERDTreeToggle<cr>
 let NERDTreeHighlightCursorline=1
 let NERDTreeWinPos="right"
 let NERDTreeIgnore=['\.vim','\.zip','\.tar','\.jpg','\.png','\.gif','\.pdf']
@@ -290,6 +295,7 @@ let g:ctrlp_max_files = 600
 let g:ctrlp_max_depth = 5
 let g:ctrlp_open_new_file = 't'
 let g:ctrlp_use_caching = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 
 
@@ -322,6 +328,20 @@ vmap " S"
 vmap ' S'
 
 
+
+" ---------------
+" Ag 
+" ---------------
+"  always start searching in my project root
+let g:ag_working_path_mode="r"
+" highlight the search terms after searching.
+let g:ag_highlight=1 
+
+vmap <leader>af y:Ag <c-r>0<cr>
+" open ag.vim
+nnoremap <leader>a :Ag
+
+
 " ---------------
 " GitGutter 
 " ---------------
@@ -337,9 +357,20 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit = 'vertical'
 
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
 
 
 let g:Powerline_colorscheme = 'solarized16'
-
 
 call SearchColor()           " Function to change color search 
